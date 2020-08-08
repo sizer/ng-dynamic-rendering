@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./demo-page.component.scss'],
 })
 export class DemoPageComponent implements OnInit {
-  public content = new FormControl('');
+  public content = new FormControl('# hello, markdown');
 
   constructor() {}
 
