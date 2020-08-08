@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+}
+
+.editor {
+  width: 50%;
+
+  textarea {
+    width: 350px;
+    min-height: 120px;
+  }
+}
+
+.preview {
+  width: 50%;
+
+  .view {
+    width: 350px;
+    min-height: 120px;
+    border: 1px solid #000;
+  }
+}
