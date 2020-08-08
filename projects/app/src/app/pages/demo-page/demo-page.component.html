@@ -1,10 +1,18 @@
 <div class="editor">
   <h4>EDITOR</h4>
 
-  <textarea name="" id="" cols="30" rows="10"></textarea>
+  <textarea
+    name=""
+    id=""
+    cols="30"
+    rows="10"
+    [formControl]="content"
+  ></textarea>
 </div>
 <div class="preview">
   <h4>PREVIEW</h4>
 
-  <div class="view"></div>
+  <div class="view">
+    {{ content.value }}
+  </div>
 </div>
