@@ -55,9 +55,17 @@
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
-
+import 'zone.js/dist/zone'; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+// polyfills for remark
+// https://github.com/wizdmio/wizdm/blob/39f488a6512f829e353f427fe2eac2ebe07d4178/markdown/src/lib/reparse-factory.js
+(window as any).process = {
+  cwd: () => {
+    return '/';
+  },
+  env: { DEBUG: undefined },
+};
