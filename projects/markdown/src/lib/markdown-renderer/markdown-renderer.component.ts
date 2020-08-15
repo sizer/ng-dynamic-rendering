@@ -1,4 +1,5 @@
-import { Component, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import * as remark from 'remark';
 
 @Component({
   selector: 'lib-markdown-renderer',
@@ -8,5 +9,10 @@ import { Component, ChangeDetectorRef, Input } from '@angular/core';
 export class MarkdownRendererComponent {
   @Input() public md = '';
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor() {}
+
+  get remarkedMD(): {} {
+    console.log(remark().parse(this.md));
+    return remark().parse(this.md);
+  }
 }
