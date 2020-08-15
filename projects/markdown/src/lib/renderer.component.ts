@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as remark from 'remark';
 
 @Component({
@@ -6,13 +6,17 @@ import * as remark from 'remark';
   templateUrl: './renderer.component.html',
   styleUrls: ['./renderer.component.scss'],
 })
-export class RendererComponent {
+export class RendererComponent implements OnInit {
   @Input() public md = '';
+  @Input() public parsedMd;
 
   constructor() {}
 
-  get remarkedMD(): {} {
-    console.log(remark().parse(this.md));
-    return remark().parse(this.md);
+  ngOnInit(): void {
+    console.log(this.parsedMd);
+    if (this.parsedMd === undefined && this.md !== '') {
+      this.parsedMd = remark().parse(this.md);
+    }
+    console.log(this.parsedMd);
   }
 }

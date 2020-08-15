@@ -1,3 +1,115 @@
-<ng-container *ngIf="remarkedMD">
-  {{ this.md }}
+<ng-container *ngIf="parsedMd">
+  <ng-container *ngFor="let child of parsedMd.children">
+    <ng-container [ngSwitch]="child.type">
+      <!-- Headings -->
+      <ng-container *ngSwitchCase="'heading'">
+        <h1 *ngIf="child.depth === 1">
+          <md-renderer [parsedMd]="child"></md-renderer>
+        </h1>
+        <h2 *ngIf="child.depth === 2">
+          <md-renderer [parsedMd]="child"></md-renderer>
+        </h2>
+        <h3 *ngIf="child.depth === 3">
+          <md-renderer [parsedMd]="child"></md-renderer>
+        </h3>
+        <h4 *ngIf="child.depth === 4">
+          <md-renderer [parsedMd]="child"></md-renderer>
+        </h4>
+        <h5 *ngIf="child.depth === 5">
+          <md-renderer [parsedMd]="child"></md-renderer>
+        </h5>
+        <h6 *ngIf="child.depth === 6">
+          <md-renderer [parsedMd]="child"></md-renderer>
+        </h6>
+      </ng-container>
+
+      <!-- Paragraph -->
+      <p *ngSwitchCase="'paragraph'">
+        <md-renderer [parsedMd]="child"></md-renderer>
+      </p>
+
+      <!-- Lists -->
+      <ng-container *ngSwitchCase="'list'">
+        <ol *ngIf="child.ordered" [start]="child.start">
+          <li *ngFor="let item of child.children">
+            <md-renderer [parsedMd]="item"></md-renderer>
+          </li>
+        </ol>
+        <ul *ngIf="!child.ordered">
+          <li *ngFor="let item of child.children">
+            <md-renderer [parsedMd]="item"></md-renderer>
+          </li>
+        </ul>
+      </ng-container>
+
+      <!-- Tables -->
+      <table *ngSwitchCase="'table'">
+        <tbody>
+          <tr *ngFor="let row of child.children">
+            <td
+              *ngFor="let cell of row.children; index as i"
+              [attr.align]="child.align[i] || ''"
+            >
+              <md-renderer [parsedMd]="cell"></md-renderer>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Thematic Break -->
+      <hr *ngSwitchCase="'thematicBreak'" />
+
+      <!-- Blockquotes -->
+      <blockquote *ngSwitchCase="'blockquote'">
+        <md-renderer [parsedMd]="child"></md-renderer>
+      </blockquote>
+
+      <!-- Emphasis -->
+      <em *ngSwitchCase="'emphasis'"
+        ><md-renderer [parsedMd]="child"></md-renderer
+      ></em>
+
+      <!-- Strong -->
+      <strong *ngSwitchCase="'strong'"
+        ><md-renderer [parsedMd]="child"></md-renderer
+      ></strong>
+
+      <!-- Delete -->
+      <del *ngSwitchCase="'delete'"
+        ><md-renderer [parsedMd]="child"></md-renderer
+      ></del>
+
+      <!-- Inlide Code -->
+      <code *ngSwitchCase="'inlineCode'">{{ child.value }}</code>
+
+      <!-- Sub-script Super-script plugin -->
+      <sub *ngSwitchCase="'sub'"
+        ><md-renderer [parsedMd]="child"></md-renderer
+      ></sub>
+
+      <!-- Super-script Super-script plugin -->
+      <sup *ngSwitchCase="'sup'"
+        ><md-renderer [parsedMd]="child"></md-renderer
+      ></sup>
+
+      <!-- Plain text with emoji support by EmojiTextModule -->
+      <span *ngSwitchCase="'text'">{{ child.value }}</span>
+
+      <!-- Line Break -->
+      <br *ngSwitchCase="'break'" />
+
+      <!-- Link -->
+      <a *ngSwitchCase="'link'" [href]="child.url"
+        ><md-renderer [parsedMd]="child"></md-renderer
+      ></a>
+
+      <!-- Image -->
+      <img
+        *ngSwitchCase="'image'"
+        [src]="child.url"
+        [title]="child.title"
+        [alt]="child.alt"
+      />
+    </ng-container>
+  </ng-container>
 </ng-container>
