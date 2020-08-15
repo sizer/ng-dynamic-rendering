@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { MarkdownRendererComponent } from './markdown-renderer/markdown-renderer.component';
+import { RendererComponent } from './renderer.component';
 import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-  declarations: [MarkdownRendererComponent],
+  declarations: [RendererComponent],
   imports: [BrowserModule],
-  exports: [MarkdownRendererComponent],
+  exports: [RendererComponent],
 })
 export class MarkdownModule {}

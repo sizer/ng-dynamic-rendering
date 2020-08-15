@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import * as remark from 'remark';
 
 @Component({
-  selector: 'lib-markdown-renderer',
-  templateUrl: './markdown-renderer.component.html',
-  styleUrls: ['./markdown-renderer.component.scss'],
+  selector: 'md-renderer',
+  templateUrl: './renderer.component.html',
+  styleUrls: ['./renderer.component.scss'],
 })
-export class MarkdownRendererComponent {
+export class RendererComponent {
   @Input() public md = '';
 
   constructor() {}

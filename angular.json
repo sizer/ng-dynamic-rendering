@@ -27,18 +27,23 @@
               "projects/app/src/favicon.ico",
               "projects/app/src/assets"
             ],
-            "styles": [
-              "projects/app/src/styles.scss"
-            ],
+            "styles": ["projects/app/src/styles.scss"],
             "scripts": [],
-            "allowedCommonJsDependencies": ["unified", "remark", "remark-parse", "remark-stringify"]
+            "allowedCommonJsDependencies": [
+              "unified",
+              "remark",
+              "remark-parse",
+              "remark-stringify"
+            ]
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "projects/app/src/environments/environment.ts",
-                "with": "projects/app/src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "projects/app/src/environments/environment.ts",
+                  "with": "projects/app/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -47,7 +52,8 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
@@ -89,9 +95,7 @@
               "projects/app/src/favicon.ico",
               "projects/app/src/assets"
             ],
-            "styles": [
-              "projects/app/src/styles.scss"
-            ],
+            "styles": ["projects/app/src/styles.scss"],
             "scripts": []
           }
         },
@@ -103,9 +107,7 @@
               "projects/app/tsconfig.spec.json",
               "projects/app/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -126,7 +128,7 @@
       "projectType": "library",
       "root": "projects/markdown",
       "sourceRoot": "projects/markdown/src",
-      "prefix": "lib",
+      "prefix": "md",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -155,9 +157,7 @@
               "projects/markdown/tsconfig.lib.json",
               "projects/markdown/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
